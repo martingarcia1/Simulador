@@ -4,7 +4,7 @@
 
 Este proyecto es un simulador básico enfocado en la cotización de productos o servicios, facturación y simulación de inversiones. La interacción se realiza íntegramente a través de la consola de JavaScript, utilizando cuadros de diálogo como `Prompt`, `Confirm` y `Alert`.
 
----
+--- 
 
 ## Objetivos Generales
 
@@ -20,61 +20,76 @@ Este proyecto es un simulador básico enfocado en la cotización de productos o 
 
 ---
 
-## Estructura del Proyecto
+## Entregable 2 - CotizaYa
 
-El proyecto está organizado de la siguiente manera:
+### Estructura del Simulador
 
----
-
-## Descripción del Simulador
-
-El simulador permite al usuario realizar cotizaciones básicas de productos o servicios. A través de cuadros de diálogo, el usuario puede ingresar datos, los cuales son procesados por funciones de JavaScript. Los resultados se muestran en la consola de JavaScript.
-
-### Funcionalidades
-
-1. **Entrada de Datos**: El usuario ingresa información mediante cuadros de diálogo.
-2. **Procesamiento de Datos**: Se realizan cálculos y validaciones utilizando condicionales y ciclos.
-3. **Salida de Resultados**: Los resultados se muestran en la consola de JavaScript.
+En esta segunda etapa, el simulador evoluciona para interactuar directamente con el HTML mediante el uso del DOM y eventos, eliminando la dependencia de la consola de JavaScript.
 
 ---
 
-## Instrucciones de Uso
+### Objetivos Generales
 
-1. Abre el archivo `index.html` en tu navegador.
-2. Abre la consola de desarrollador (F12 o clic derecho > Inspeccionar > Consola).
-3. Sigue las instrucciones que aparecerán en los cuadros de diálogo.
+- Mostrar el simulador JS interactuando con HTML.
+- Integrar las herramientas de JavaScript aprendidas hasta el momento.
 
----
+### Objetivos Específicos
 
-## Formato de Entrega
-
-El proyecto se entrega en un archivo `.ZIP` con la siguiente estructura:
-
-- Carpeta principal con el nombre `Entregable1+Apellido`.
-- Subcarpetas para archivos CSS y JS.
-- Archivo HTML principal (`index.html`).
-- Archivo JavaScript referenciado (`main.js`).
+- Modificar la estructura anterior, integrando JavaScript con HTML mediante el uso de DOM y eventos.
+- Programar el circuito de interacción completo de la lógica de la aplicación web, agregando las nuevas herramientas de JavaScript aprendidas.
+- Guardar objetos o arrays de objetos en `localStorage` para dejar disponibles los datos agregados por el usuario (por ejemplo, los productos en un carrito de compras).
 
 ---
 
-## Sugerencias
+### Se debe entregar
 
-- Enfócate en la lógica de JavaScript en esta etapa.
-- Utiliza mensajes claros y bien estructurados en los cuadros de diálogo.
-- Emula características avanzadas con variables, constantes y arrays si es necesario.
+- Documento HTML + CSS (al menos uno).
+- Archivo(s) JS referenciado(s) en el HTML.
 
 ---
 
-## Criterios de Evaluación
+### Formato
 
-1. **Estructura HTML y JS**: Uso adecuado de HTML5 y referencia correcta del archivo JS.
-2. **Algoritmos**: Implementación Se utiliza algoritmo condicional y con ciclo (IF, bucles for) de manera óptima , reflejando lo aprendido en clase.
-3. **Funciones**: Nombres claros y estructura correcta, generando resultados dinámicos y funcionales.
-Los nombres de las funciones son claros y dan a entender que acción realizan. Se emplea la estructura correcta para el armado de las mismas. Crea funciones dinámicas de manera correcta. Generan un resultado correcto cuando se ejecutan.
+- Archivo en formato `.ZIP` con la carpeta y los archivos del proyecto.
+- El nombre del archivo debe ser: `Entregable2+Apellido`.
+- Los archivos JS, CSS y JSON deben estar organizados en subcarpetas.
 
-
-Aclaración
-Pueden utilizar el starter template de Bootstrap para agilizar el armado de la esrtuctura HTML en caso de que lo deseen. O pueden optar por aplicar JS a sus HTML desarollados por los propios estudiantes (ya sea en otros cursos o para este proyecto).
 ---
 
-¡Gracias por revisar este proyecto! 😊
+### Sugerencias
+
+- En esta etapa, debes integrar JavaScript con HTML y/o CSS.
+- Diseña la estética visual necesaria en tu webapp con CSS y/o un framework CSS.
+- Los algoritmos de JavaScript deben ser invocados desde HTML e interactuar con el contenido web, creando HTML dinámico, leyendo y procesando datos ingresados desde formularios, inputs, etc.
+- Elimina toda interacción con la consola de JavaScript, convirtiendo esta interacción en el DOM del HTML.
+
+---
+
+### Criterios de Evaluación
+
+#### Funcionalidad
+- Se simula uno o más flujos de trabajo en términos de entrada, proceso y salida.
+- La funcionalidad es apropiada al contexto del simulador.
+- Carece de errores de cómputo durante el procesamiento.
+
+#### Interactividad
+- Se capturan entradas ingresadas por el usuario mediante eventos.
+- Se efectúan una o más salidas por HTML modificando el DOM.
+- Existe un control de ingreso de entradas y las salidas son coherentes en relación a los datos ingresados.
+
+#### Escalabilidad
+- Se declaran funciones con parámetros para definir instrucciones con una tarea específica.
+- Se emplean arrays para agrupar valores relacionados.
+- Se definen objetos con propiedades y métodos relevantes al contexto.
+- Se establece un criterio homogéneo para la detección de eventos.
+- Se almacena en `localStorage` datos relevantes generados durante la simulación.
+
+#### Integridad
+- Se define el código JavaScript en un archivo `.js`, referenciándolo correctamente desde el HTML.
+- Se evitan métodos `prompt()` y `alert()` para evitar interrupciones durante el procesamiento y actualización del DOM.
+- La información estática del proyecto se emplea adecuadamente.
+
+#### Legibilidad
+- Los nombres de variables, funciones y objetos son significativos para el contexto.
+- Las instrucciones se escriben de forma legible y se emplean comentarios oportunos.
+- El código fuente es ordenado en términos de declaración y secuencia.

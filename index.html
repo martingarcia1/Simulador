@@ -12,11 +12,37 @@
     <!-- Este proyecto se enfocara de la cotizacion de productos o servicios, facturacion y simulacion de inversiones -->
     <h1>Bienvenido a CotizaYa</h1>
     <header>
-
+        <nav>
+            <ul>
+                <li><a href="/index.html">Simulador de Cotización</a></li>
+                <li><a href="./pages/facturacion.html">Facturación</a></li>
+                <li><a href="./pages/nosotros.html">Sobre nosotros</a></li>
+                <li><a href="./pages/productos.html">Productos</a></li>
+                <li><a href="./pages/servicios.html">Servicios</a></li> 
+                <li><a href="./pages/contacto.html">Contacto</a></li> 
+            </ul>
+        </nav>
     </header>
 
     <main>
-
+        <section>
+            <h2>Simulador de Cotización</h2>
+            <form id="cotizacionForm">
+                <label for="moneda">Seleccione la moneda:</label>
+                <select id="moneda" name="moneda">
+                    <option value="dolar">Dólar BNA</option>
+                    <option value="dolarBlue">Dólar Blue</option>
+                    <option value="dolarTarjeta">Dólar Tarjeta</option>
+                    <option value="dolarMep">Dolar Mep</option>
+                    <option value="euro">Euro</option>
+                    <option value="reales">Real</option>
+                </select> 
+                <label for="cantidad">Ingrese la cantidad:</label>
+                <input type="number" id="cantidad" name="cantidad" required>
+                <button type="submit">Cotizar</button>
+            </form>
+            <div id="resultado"></div>
+        </section>
     </main>
 
     <footer>
@@ -24,4 +50,5 @@
     </footer>
     <script src="main.js"></script>
 </body>
+
 </html>
