@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturación - CotizaYa</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/facturacion.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Simulador de Cotización</a></li>
+                <li><a href="./servicios.html">Servicios</a></li>
+                <li><a href="./productos.html">Productos</a></li>
+                <li><a href="./facturacion.html">Facturación</a></li>
+                <li><a href="./nosotros.html">Sobre nosotros</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="factura-container">
+            <!-- Sección de Factura -->
+            <div id="factura" class="factura">
+                <div class="factura-header">
+                    <div class="empresa-info">
+                        <h1>CleanPro ✨</h1>
+                        <p>Servicio de Limpieza Profesional</p>
+                        <p>San Miguel de Tucumán, Tucumán</p>
+                        <p>Tel: (381) XXX-XXXX</p>
+                    </div>
+                    <div class="factura-numero">
+                        <h2>FACTURA <span id="tipoFacturaDisplay"></span></h2>
+                        <p>N°: <span id="numeroFactura"></span></p>
+                        <p>Fecha: <span id="fechaFactura"></span></p>
+                    </div>
+                </div>
+
+                <div class="cliente-info">
+                    <h3>Datos del Cliente</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Nombre/Razón Social:</label>
+                            <span id="nombreClienteDisplay"></span>
+                        </div>
+                        <div class="info-item">
+                            <label>Tipo de Documento:</label>
+                            <span id="tipoDocumentoDisplay"></span>
+                        </div>
+                        <div class="info-item">
+                            <label>N° Documento:</label>
+                            <span id="numeroDocumentoDisplay"></span>
+                        </div>
+                        <div class="info-item">
+                            <label>Dirección:</label>
+                            <span id="direccionClienteDisplay"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detalles-servicio">
+                    <h3>Detalles del Servicio</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Descripción</th>
+                                <th>Cantidad</th>
+                                <th>Precio Unit.</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="detallesServicioBody">
+                            <!-- Los detalles se agregarán dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="totales">
+                    <div class="totales-grid">
+                        <div class="total-item">
+                            <label>Subtotal:</label>
+                            <span id="subtotalDisplay"></span>
+                        </div>
+                        <div class="total-item" id="ivaContainer">
+                            <label>IVA (21%):</label>
+                            <span id="ivaDisplay"></span>
+                        </div>
+                        <div class="total-item" id="iibbContainer">
+                            <label>IIBB (3.5%):</label>
+                            <span id="iibbDisplay"></span>
+                        </div>
+                        <div class="total-item total-final">
+                            <label>TOTAL:</label>
+                            <span id="totalDisplay"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="observaciones">
+                    <p>Observaciones:</p>
+                    <ul>
+                        <li>Validez de la cotización: 7 días</li>
+                        <li>Formas de pago: Efectivo, Transferencia, Mercado Pago</li>
+                        <li>Los precios incluyen IVA</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Botones de control -->
+            <div class="controles-factura">
+                <button id="btnImprimir" class="btn-primary">
+                    <span class="icon">🖨️</span> Imprimir Factura
+                </button>
+                <button id="btnVolver" class="btn-secondary">
+                    <span class="icon">⬅️</span> Volver a Servicios
+                </button>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

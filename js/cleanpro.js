@@ -55,6 +55,16 @@ class CleanProCotizador {    constructor() {
         this.fechaServicio = null;
         this.horaServicio = null;
         this.horasRequeridas = this.TIEMPO_MINIMO;
+
+        // Configuración de IVA para facturación
+        this.IVA = 0.21; // 21% IVA
+        this.IIBB = 0.035; // 3.5% Ingresos Brutos
+        
+        // Datos de facturación
+        this.facturacion = {
+            tipo: null,
+            datos: null
+        };
     }
 
     setFechaHoraServicio(fecha, hora) {
@@ -77,15 +87,41 @@ class CleanProCotizador {    constructor() {
             inicio: this.fechaServicio,
             fin: new Date(this.fechaServicio.getTime() + (tiempoTotal * 60 * 60 * 1000))
         };
-    }
-
-    agregarAmbiente(tipo, cantidad = 1) {
+    }    agregarAmbiente(tipo, cantidad = 1) {
         this.ambientesSeleccionados.push({
             tipo,
             cantidad,
             precio: Math.ceil((this.precios[tipo] * cantidad) / 500) * 500 // Redondear a múltiplos de 500
         });
-    }    agregarVidrio(ancho, alto, cantidad = 1, unidad = 'cm') {
+    }
+
+    calcularPrecioAmbiente(tipo) {
+        // Obtener el precio base del ambiente
+        const precioBase = this.precios[tipo];
+        if (!precioBase) {
+            throw new Error(`Tipo de ambiente no válido: ${tipo}`);
+        }
+        // Redondear a múltiplos de 500
+        return Math.ceil(precioBase / 500) * 500;
+    }
+
+    calcularPrecioVidrio(ancho, alto, unidad = 'cm') {
+        // Convertir medidas a metros cuadrados
+        let metros;
+        if (unidad === 'cm') {
+            metros = (ancho * alto) / 10000; // convertir cm² a m²
+        } else {
+            metros = ancho * alto; // ya está en m²
+        }
+        
+        // Calcular precio base usando el precio por metro cuadrado de vidrio
+        const precioBase = metros * this.precios.precioPorVidrio;
+        
+        // Redondear a múltiplos de 500
+        return Math.ceil(precioBase / 500) * 500;
+    }
+
+    agregarVidrio(ancho, alto, cantidad = 1, unidad = 'cm') {
         // Convertir todas las medidas a metros cuadrados
         let metros;
         if (unidad === 'cm') {
@@ -111,6 +147,35 @@ class CleanProCotizador {    constructor() {
             throw new Error(`El servicio debe ser entre ${this.TIEMPO_MINIMO} y ${this.TIEMPO_MAXIMO} horas`);
         }
         this.horasRequeridas = horas;
+    }
+
+    setDatosFacturacion(tipo, datos) {
+        this.facturacion = {
+            tipo,
+            datos: {
+                ...datos,
+                fecha: new Date()
+            }
+        };
+    }
+
+    calcularImpuestos(subtotal) {
+        let montoIVA = 0;
+        let montoIIBB = 0;
+        let total = subtotal;
+
+        if (this.facturacion.tipo === 'A') {
+            montoIVA = subtotal * this.IVA;
+            montoIIBB = subtotal * this.IIBB;
+            total = subtotal + montoIVA + montoIIBB;
+        }
+
+        return {
+            subtotal: Math.ceil(subtotal / 500) * 500,
+            iva: Math.ceil(montoIVA / 500) * 500,
+            iibb: Math.ceil(montoIIBB / 500) * 500,
+            total: Math.ceil(total / 500) * 500
+        };
     }
 
     calcularTotal() {
@@ -156,6 +221,9 @@ class CleanProCotizador {    constructor() {
         const precioMetros = redondearPrecio(this.PRECIO_HORA * tiempoAjustado * (tiempoMetros / (tiempoAmbientes + tiempoMetros + tiempoVidrios)));
         const precioVidrios = redondearPrecio(this.PRECIO_HORA * tiempoAjustado * (tiempoVidrios / (tiempoAmbientes + tiempoMetros + tiempoVidrios)));
 
+        const subtotal = precioAmbientes + precioVidrios + precioMetros;
+        const impuestos = this.calcularImpuestos(subtotal);
+
         return {
             detalles: {
                 ambientes: this.ambientesSeleccionados.map(ambiente => ({
@@ -181,13 +249,20 @@ class CleanProCotizador {    constructor() {
                     minimo: tiempoMinAmbientes * factorTiempo,
                     maximo: tiempoMaxAmbientes * factorTiempo,
                     promedio: tiempoEstimado
+                },
+                facturacion: {
+                    ...this.facturacion,
+                    impuestos
                 }
             },
             precios: {
                 ambientes: precioAmbientes,
                 vidrios: precioVidrios,
                 metros: precioMetros,
-                total: precioAmbientes + precioVidrios + precioMetros
+                subtotal: impuestos.subtotal,
+                iva: impuestos.iva,
+                iibb: impuestos.iibb,
+                total: impuestos.total
             }
         };
     }

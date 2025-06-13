@@ -267,7 +267,6 @@ button:hover {
     padding: 0.8rem;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 1rem;
 }
 
 .form-group textarea {
@@ -373,104 +372,97 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin-top: 1rem;
 }
 
-.ambiente-item, .vidrio-item {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+.ambientes-header,
+.vidrios-header {
+    margin-bottom: 1rem;
 }
 
-.ambiente-tipo {
-    flex: 2;
-}
-
-.ambiente-cantidad {
-    flex: 1;
-    max-width: 100px;
-}
-
-.vidrio-ancho, .vidrio-alto {
-    flex: 1;
-}
-
-.btn-agregar-ambiente, .btn-agregar-vidrio {
+.btn-agregar {
     background-color: #28a745;
     color: white;
     border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    line-height: 1;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
-.btn-agregar-ambiente:hover, .btn-agregar-vidrio:hover {
+.btn-agregar:hover {
     background-color: #218838;
+    transform: translateY(-1px);
+}
+
+.ambiente-item,
+.vidrio-item {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    align-items: center;
+}
+
+.ambiente-tipo,
+.vidrio-unidad {
+    flex: 2;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.ambiente-cantidad,
+.vidrio-cantidad,
+.vidrio-ancho,
+.vidrio-alto {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    min-width: 80px;
 }
 
 .btn-eliminar {
     background-color: #dc3545;
     color: white;
     border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    line-height: 1;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-eliminar:hover {
     background-color: #c82333;
+    transform: scale(1.1);
 }
 
-.detalles-cotizacion {
-    background: #f8f9fa;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-}
-
-.detalles-cotizacion ul {
-    list-style: none;
-    padding: 0;
-}
-
-.detalles-cotizacion li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #dee2e6;
-}
- 
-.vidrio-unidad {
-    flex: 1;
-    max-width: 150px;
-}
-
-.vidrio-cantidad {
-    flex: 0.5;
-    max-width: 80px;
-}
-
+/* Animaciones */
+.ambiente-item,
 .vidrio-item {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    transition: transform 0.2s ease;
+    animation: slideIn 0.3s ease-out;
 }
 
-.vidrio-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.vidrio-item input,
-.vidrio-item select {
-    margin: 0 5px;
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Mejoras en la presentación de resultados */
@@ -501,18 +493,361 @@ footer {
     font-size: 1.2rem;
 }
 
-/* Animación para los resultados */
-@keyframes slideDown {
+/* Estilos para facturación */
+.facturacion-campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.facturacion-campos .campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.facturacion-campos label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.facturacion-campos input,
+.facturacion-campos select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.facturacion-campos input:focus,
+.facturacion-campos select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.detalles-facturacion {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.detalles-facturacion h4 {
+    color: #007bff;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.impuestos-desglose {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #dee2e6;
+}
+
+.impuestos-desglose p {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.25rem 0;
+    font-size: 1.1em;
+}
+
+.impuestos-desglose .total-final {
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #28a745;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #28a745;
+}
+
+/* Estilos para la factura */
+.factura-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.factura {
+    background: white;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.factura-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+}
+
+.empresa-info h1 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.factura-numero {
+    text-align: right;
+}
+
+.factura-numero h2 {
+    color: #e74c3c;
+    margin-bottom: 0.5rem;
+}
+
+.cliente-info {
+    margin-bottom: 2rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.info-item {
+    margin-bottom: 0.5rem;
+}
+
+.info-item label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #666;
+}
+
+.detalles-servicio table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.detalles-servicio th,
+.detalles-servicio td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.detalles-servicio th {
+    background: #f8f9fa;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.totales {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid #eee;
+}
+
+.totales-grid {
+    display: grid;
+    gap: 0.5rem;
+    justify-content: end;
+}
+
+.total-item {
+    display: grid;
+    grid-template-columns: auto 120px;
+    gap: 1rem;
+    align-items: center;
+}
+
+.total-final {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #eee;
+}
+
+.observaciones {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.observaciones ul {
+    margin: 0.5rem 0 0 1.5rem;
+    color: #666;
+}
+
+.controles-factura {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #2ecc71;
+    color: white;
+}
+
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #27ae60;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+}
+
+/* Estilos para impresión */
+@media print {
+    header, .controles-factura {
+        display: none !important;
+    }
+
+    .factura-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .factura {
+        box-shadow: none;
+        border: none;
+    }
+
+    body {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* Estilos para los campos de facturación */
+#datosFacturacion {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+#datosFacturacion h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #007bff;
+}
+
+.form-row {
+    margin-bottom: 1rem;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+.form-row input,
+.form-row select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.form-row input:focus,
+.form-row select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-cotizar {
+    background-color: #28a745;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    transition: background-color 0.2s;
+}
+
+.btn-cotizar:hover {
+    background-color: #218838;
+}
+
+/* Estilos para campos inválidos y mejorar la visibilidad del formulario */
+.form-control.invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Estilos para campos requeridos */
+.form-control[required] {
+    background-color: #fff;
+}
+
+/* Estilos para campos deshabilitados */
+.form-control[tabindex="-1"] {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Estilos para campos habilitados */
+.form-control[tabindex="0"] {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Mejorar la visibilidad del contenedor de datos de facturación */
+#datosFacturacion {
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+}
+
+#datosFacturacion.visible {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-10px);
     }
     to {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.resultado-cotizacion {
-    animation: slideDown 0.4s ease-out;
 }
