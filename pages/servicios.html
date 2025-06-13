@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CotizaYa</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <!-- Este proyecto se enfocara de la cotizacion de productos o servicios, facturacion y simulacion de inversiones -->
+    <h1>Bienvenido a CotizaYa</h1>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Simulador de Cotización</a></li>
+                <li><a href="./servicios.html">Servicios</a></li>
+                <li><a href="./productos.html">Productos</a></li>
+                <li><a href="./facturacion.html">Facturación</a></li>
+                <li><a href="./nosotros.html">Sobre nosotros</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>    <main>
+        <section class="servicios-grid">
+            <div class="servicio-card cleanpro-card">
+                <h2>CleanPro ✨</h2>
+                <h3>Servicio de Limpieza Profesional en Tucumán</h3>
+                <div class="servicios-icons">
+                    <p>🏢 Edificios y Departamentos</p>
+                    <p>💼 Oficinas y Comercios</p>
+                    <p>🏥 Consultorios Médicos</p>
+                    <p>🏠 Hogares</p>
+                </div>
+                  <form id="cotizacionLimpiezaForm" class="cotizacion-form">
+                    <div class="form-group">
+                        <label for="tipoPropiedad">Tipo de Propiedad:</label>
+                        <select id="tipoPropiedad" required>
+                            <option value="">Seleccione tipo de propiedad</option>
+                            <option value="casa">Casa</option>
+                            <option value="departamento">Departamento</option>
+                            <option value="oficina">Oficina</option>
+                            <option value="consultorio">Consultorio</option>
+                            <option value="edificio">Edificio</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ambientes a limpiar:</label>
+                        <div id="ambientesContainer" class="ambientes-container">
+                            <div class="ambiente-item">
+                                <select class="ambiente-tipo">
+                                    <option value="">Seleccione ambiente</option>
+                                    <option value="baño">Baño</option>
+                                    <option value="cocina">Cocina</option>
+                                    <option value="dormitorio">Dormitorio</option>
+                                    <option value="living">Living</option>
+                                    <option value="oficina">Oficina</option>
+                                    <option value="consultorio">Consultorio</option>
+                                    <option value="sala_espera">Sala de Espera</option>
+                                </select>
+                                <input type="number" class="ambiente-cantidad" min="1" value="1">
+                                <button type="button" class="btn-agregar-ambiente">+</button>
+                            </div>
+                        </div>
+                    </div>                    <div class="form-group">
+                        <label for="horasServicio">Horas de Servicio Requeridas:</label>
+                        <input type="number" id="horasServicio" min="3" max="8" value="3" required>
+                        <small class="form-help">Mínimo 3 horas, máximo 8 horas por día</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="metrosCuadrados">Metros Cuadrados Totales:</label>
+                        <input type="number" id="metrosCuadrados" min="1" required>
+                    </div><div class="form-group">
+                        <label>Ventanas a Limpiar</label>
+                        <div id="vidriosContainer" class="vidrios-container">
+                            <div class="vidrio-item">
+                                <select class="vidrio-unidad">
+                                    <option value="cm">Centímetros</option>
+                                    <option value="m">Metros</option>
+                                </select>
+                                <input type="number" class="vidrio-ancho" placeholder="Ancho" min="1" step="0.01">
+                                <input type="number" class="vidrio-alto" placeholder="Alto" min="1" step="0.01">
+                                <input type="number" class="vidrio-cantidad" placeholder="Cantidad" min="1" value="1">
+                                <button type="button" class="btn-agregar-vidrio">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="monedaCotizacion">Moneda de Cotización:</label>
+                        <select id="monedaCotizacion" required>
+                            <option value="ars">Pesos Argentinos</option>
+                            <option value="usd">Dólar BNA</option>
+                            <option value="usdblue">Dólar Blue</option>
+                            <option value="eur">Euro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fechaServicio">Fecha del Servicio:</label>
+                        <input type="date" id="fechaServicio" required min="2024-01-01">
+                    </div>
+                    <div class="form-group">
+                        <label for="horaServicio">Hora del Servicio:</label>                        <select id="horaServicio" required>
+                            <option value="">Seleccione una hora</option>
+                            <option value="08:00">08:00</option>
+                            <option value="08:30">08:30</option>
+                            <option value="09:00">09:00</option>
+                            <option value="09:30">09:30</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:30">10:30</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:30">11:30</option>
+                            <option value="12:00">12:00</option>
+                            <option value="12:30">12:30</option>
+                            <option value="13:00">13:00</option>
+                            <option value="13:30">13:30</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:30">14:30</option>
+                            <option value="15:00">15:00</option>
+                            <option value="15:30">15:30</option>
+                            <option value="16:00">16:00</option>
+                            <option value="16:30">16:30</option>
+                        </select>
+                        <small class="form-help">Los servicios deben finalizar antes de las 17:00</small>
+                    </div>
+
+                    <button type="submit" class="btn-cotizar">Cotizar Servicio</button>
+                </form>
+
+                <div id="resultadoLimpieza" class="resultado-cotizacion" style="display: none;"></div>
+
+                <div class="contact-info">
+                    <p>📱 Contáctanos: 381-2153582</p>
+                    <p>🕒 Servicios Continuos Disponibles</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CleanPro - Todos los derechos reservados</p>
+    </footer>    <script src="../js/cleanpro.js"></script>
+    <script src="../js/cotizacion.js">
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('cotizacionLimpiezaForm');
+            const ambientesContainer = document.getElementById('ambientesContainer');
+            const vidriosContainer = document.getElementById('vidriosContainer');
+            const resultadoDiv = document.getElementById('resultadoLimpieza');
+            const cotizador = new CleanProCotizador();
+              // Agregar ambiente
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('btn-agregar-ambiente')) {
+                    const nuevoAmbiente = document.createElement('div');
+                    nuevoAmbiente.className = 'ambiente-item';
+                    nuevoAmbiente.innerHTML = `
+                        <select class="ambiente-tipo">
+                            <option value="">Seleccione ambiente</option>
+                            <option value="baño">Baño</option>
+                            <option value="cocina">Cocina</option>
+                            <option value="dormitorio">Dormitorio</option>
+                            <option value="living">Living</option>
+                            <option value="oficina">Oficina</option>
+                            <option value="consultorio">Consultorio</option>
+                            <option value="sala_espera">Sala de Espera</option>
+                        </select>
+                        <input type="number" class="ambiente-cantidad" min="1" value="1">
+                        <button type="button" class="btn-eliminar">-</button>
+                    `;
+                    ambientesContainer.appendChild(nuevoAmbiente);                } else if (e.target.classList.contains('btn-agregar-vidrio')) {
+                    const nuevoVidrio = document.createElement('div');
+                    nuevoVidrio.className = 'vidrio-item';
+                    nuevoVidrio.innerHTML = `
+                        <select class="vidrio-unidad">
+                            <option value="cm">Centímetros</option>
+                            <option value="m">Metros</option>
+                        </select>
+                        <input type="number" class="vidrio-ancho" placeholder="Ancho" min="1" step="0.01">
+                        <input type="number" class="vidrio-alto" placeholder="Alto" min="1" step="0.01">
+                        <input type="number" class="vidrio-cantidad" placeholder="Cantidad" min="1" value="1">
+                        <button type="button" class="btn-eliminar">-</button>
+                    `;
+                    vidriosContainer.appendChild(nuevoVidrio);
+                } else if (e.target.classList.contains('btn-eliminar')) {
+                    e.target.parentElement.remove();
+                }
+            });            // Manejar la cotización
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const moneda = document.getElementById('monedaCotizacion').value;
+                const metrosCuadrados = Number(document.getElementById('metrosCuadrados').value);
+                
+                if (!metrosCuadrados || metrosCuadrados <= 0) {
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Por favor ingrese los metros cuadrados totales'
+                    });
+                    return;
+                }
+
+                // Limpiar cotizador
+                cotizador.limpiar();
+                
+                // Agregar metros cuadrados
+                cotizador.setMetrosCuadrados(metrosCuadrados);
+
+                // Procesar ambientes
+                const ambientes = document.querySelectorAll('.ambiente-item');
+                for (const ambiente of ambientes) {
+                    const tipo = ambiente.querySelector('.ambiente-tipo').value;
+                    const cantidad = Number(ambiente.querySelector('.ambiente-cantidad').value);
+                    
+                    if (tipo && cantidad > 0) {
+                        cotizador.agregarAmbiente(tipo, cantidad);
+                    }
+                }
+
+                // Procesar vidrios
+                const vidrios = document.querySelectorAll('.vidrio-item');
+                for (const vidrio of vidrios) {
+                    const ancho = Number(vidrio.querySelector('.vidrio-ancho').value);
+                    const alto = Number(vidrio.querySelector('.vidrio-alto').value);
+                    
+                    if (ancho > 0 && alto > 0) {
+                        cotizador.agregarVidrio(ancho, alto);
+                    }
+                }                try {
+                    // Calcular totales
+                    const resultado = cotizador.calcularTotal();
+                    const { monto: precioFinal, simbolo } = await cotizador.convertirMoneda(
+                        resultado.precios.total,
+                        moneda
+                    );
+
+                    // Mostrar resultado detallado
+                    let detallesAmbientes = '';
+                    if (resultado.detalles.ambientes.length > 0) {
+                        detallesAmbientes = `
+                            <div class="detalles-cotizacion">
+                                <h4>Detalles de Ambientes</h4>
+                                <ul>
+                                    ${resultado.detalles.ambientes.map(a => `
+                                        <li class="precio-item">
+                                            <span>${a.cantidad} ${a.tipo}(s)</span>
+                                            <span>$${a.precio.toLocaleString('es-AR')}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                                <p class="precio-item">
+                                    <strong>Subtotal Ambientes:</strong>
+                                    <span>$${resultado.precios.ambientes.toLocaleString('es-AR')}</span>
+                                </p>
+                            </div>
+                        `;
+                    }
+
+                    let detallesVidrios = '';
+                    if (resultado.detalles.vidrios.length > 0) {
+                        detallesVidrios = `
+                            <div class="detalles-cotizacion">
+                                <h4>Detalles de Vidrios</h4>
+                                <ul>
+                                    ${resultado.detalles.vidrios.map(v => `
+                                        <li class="precio-item">
+                                            <span>${v.ancho}cm x ${v.alto}cm (${v.metros.toFixed(2)}m²)</span>
+                                            <span>$${v.precio.toLocaleString('es-AR')}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                                <p class="precio-item">
+                                    <strong>Subtotal Vidrios:</strong>
+                                    <span>$${resultado.precios.vidrios.toLocaleString('es-AR')}</span>
+                                </p>
+                            </div>
+                        `;
+                    }                    resultadoDiv.innerHTML = `
+                        <h3>Cotización del Servicio</h3>
+                        <div class="detalles-cotizacion">
+                            <h4>Detalles de Superficie</h4>
+                            <p class="precio-item">
+                                <span>Metros Cuadrados Totales: ${resultado.detalles.metrosCuadrados}m²</span>
+                                <span>${resultado.detalles.tiempoMetrosCuadrados.toFixed(1)} horas</span>
+                                <span>$${resultado.precios.metros.toLocaleString('es-AR')}</span>
+                            </p>
+                        </div>
+                        ${detallesAmbientes ? `
+                            <div class="detalles-cotizacion">
+                                <h4>Detalles de Ambientes</h4>
+                                <ul>
+                                    ${resultado.detalles.ambientes.map(a => `
+                                        <li class="precio-item">
+                                            <span>${a.cantidad} ${a.tipo}(s)</span>
+                                            <span>${a.tiempo.toFixed(1)} horas</span>
+                                            <span>$${a.precio.toLocaleString('es-AR')}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                                <p class="precio-item">
+                                    <strong>Subtotal Ambientes:</strong>
+                                    <span>$${resultado.precios.ambientes.toLocaleString('es-AR')}</span>
+                                </p>
+                            </div>
+                        ` : ''}
+                        ${detallesVidrios ? `
+                            <div class="detalles-cotizacion">
+                                <h4>Detalles de Vidrios</h4>
+                                <ul>
+                                    ${resultado.detalles.vidrios.map(v => `
+                                        <li class="precio-item">
+                                            <span>${v.ancho}cm x ${v.alto}cm (${v.metros.toFixed(2)}m²)</span>
+                                            <span>${v.tiempo.toFixed(1)} horas</span>
+                                            <span>$${v.precio.toLocaleString('es-AR')}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                                <p class="precio-item">
+                                    <strong>Subtotal Vidrios:</strong>
+                                    <span>$${resultado.precios.vidrios.toLocaleString('es-AR')}</span>
+                                </p>
+                            </div>
+                        ` : ''}
+                        <div class="detalles-cotizacion">
+                            <p class="precio-item">
+                                <strong>Tiempo Total Estimado:</strong>
+                                <strong>${resultado.detalles.tiempoTotal.toFixed(1)} horas</strong>
+                            </p>
+                            <p class="precio-item precio-total">
+                                <strong>TOTAL:</strong>
+                                <strong>${simbolo}${precioFinal.toLocaleString('es-AR', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })}</strong>
+                            </p>
+                        </div>
+                    `;
+                    resultadoDiv.style.display = 'block';
+
+                    // Guardar en localStorage
+                    const cotizacion = {
+                        fecha: new Date().toISOString(),
+                        tipo: tipoServicio.value,
+                        cantidad,
+                        moneda,
+                        precioBase,
+                        precioFinal
+                    };
+                    const historial = JSON.parse(localStorage.getItem('historialLimpieza') || '[]');
+                    historial.unshift(cotizacion);
+                    if (historial.length > 10) historial.pop();
+                    localStorage.setItem('historialLimpieza', JSON.stringify(historial));
+
+                } catch (error) {
+                    console.error('Error al obtener cotizaciones:', error);
+                    await Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudieron obtener las cotizaciones'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

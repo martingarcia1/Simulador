@@ -298,3 +298,221 @@ footer {
     padding: 1rem;
     margin-top: 2rem;
 }
+
+/* Estilos específicos para CleanPro */
+.cleanpro-card {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.servicios-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.servicios-icons p {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.servicios-icons p:hover {
+    transform: translateY(-3px);
+    background: #e9ecef;
+}
+
+.cotizacion-form {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+}
+
+.resultado-cotizacion {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    animation: slideIn 0.3s ease-out;
+}
+
+.precio-final {
+    font-size: 1.5rem;
+    color: #28a745;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.contact-info {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos para el formulario de cotización de limpieza */
+.ambientes-container, .vidrios-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ambiente-item, .vidrio-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.ambiente-tipo {
+    flex: 2;
+}
+
+.ambiente-cantidad {
+    flex: 1;
+    max-width: 100px;
+}
+
+.vidrio-ancho, .vidrio-alto {
+    flex: 1;
+}
+
+.btn-agregar-ambiente, .btn-agregar-vidrio {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-agregar-ambiente:hover, .btn-agregar-vidrio:hover {
+    background-color: #218838;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-eliminar:hover {
+    background-color: #c82333;
+}
+
+.detalles-cotizacion {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.detalles-cotizacion ul {
+    list-style: none;
+    padding: 0;
+}
+
+.detalles-cotizacion li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #dee2e6;
+}
+ 
+.vidrio-unidad {
+    flex: 1;
+    max-width: 150px;
+}
+
+.vidrio-cantidad {
+    flex: 0.5;
+    max-width: 80px;
+}
+
+.vidrio-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease;
+}
+
+.vidrio-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.vidrio-item input,
+.vidrio-item select {
+    margin: 0 5px;
+}
+
+/* Mejoras en la presentación de resultados */
+.detalles-cotizacion h4 {
+    color: #007bff;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.precio-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+}
+
+.precio-item span:last-child {
+    text-align: right;
+    font-weight: 500;
+    color: #28a745;
+}
+
+.precio-total {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid #28a745;
+    font-size: 1.2rem;
+}
+
+/* Animación para los resultados */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.resultado-cotizacion {
+    animation: slideDown 0.4s ease-out;
+}
