@@ -1,0 +1,41 @@
+{
+    "cotizaciones": {
+        "dolar": {
+            "nombre": "Dólar BNA",
+            "valor": 1200,
+            "variacion": "+0.00%",
+            "ultimaActualizacion": "2025-06-13T10:00:00"
+        },
+        "dolarBlue": {
+            "nombre": "Dólar Blue",
+            "valor": 1190,
+            "variacion": "+1.2%",
+            "ultimaActualizacion": "2025-06-13T10:00:00"
+        },
+        "dolarTarjeta": {
+            "nombre": "Dólar Tarjeta",
+            "valor": 1560,
+            "variacion": "+0.00%",
+            "ultimaActualizacion": "2025-06-13T10:00:00"
+        },
+        "dolarMep": {
+            "nombre": "Dólar MEP",
+            "valor": 1190,
+            "variacion": "+0.36%",
+            "ultimaActualizacion": "2025-06-13T10:00:00"
+        },
+        "euro": {
+            "nombre": "Euro",
+            "valor": 1375,
+            "variacion": "+0.27%",
+            "ultimaActualizacion": "2025-06-13T10:00:00"
+        },
+        "reales": {
+            "nombre": "Real",
+            "valor": 214,
+            "variacion": "-0.14%",
+            "ultimaActualizacion": "2025-06-13T10:00:00"
+        }
+    },
+    "historial": []
+}

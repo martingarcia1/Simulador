@@ -8,44 +8,152 @@
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
+// Clase para manejar las cotizaciones
+class CotizadorMonedas {
+    constructor() {
+        this.cotizaciones = {};
+        this.historial = [];
+    }
+
+    async inicializar() {
+        try {
+            const response = await fetch('./data/cotizaciones.json');
+            const data = await response.json();
+            this.cotizaciones = data.cotizaciones;
+            this.historial = data.historial;
+            this.mostrarUltimasActualizaciones();
+        } catch (error) {
+            console.error('Error al cargar las cotizaciones:', error);
+            await Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudieron cargar las cotizaciones'
+            });
+        }
+    }
+
+    calcularCotizacion(moneda, cantidad) {
+        const cotizacion = this.cotizaciones[moneda];
+        if (!cotizacion) return null;
+        
+        const resultado = cantidad * cotizacion.valor;
+        this.guardarEnHistorial(moneda, cantidad, resultado);
+        return {
+            ...cotizacion,
+            cantidadOriginal: cantidad,
+            resultado: resultado
+        };
+    }
+
+    guardarEnHistorial(moneda, cantidad, resultado) {
+        const cotizacion = {
+            fecha: new Date().toISOString(),
+            moneda: this.cotizaciones[moneda].nombre,
+            cantidad: cantidad,
+            resultado: resultado
+        };
+        this.historial.unshift(cotizacion);
+        if (this.historial.length > 10) this.historial.pop();
+        
+        localStorage.setItem('historialCotizaciones', JSON.stringify(this.historial));
+        this.mostrarHistorial();
+    }
+
+    mostrarUltimasActualizaciones() {
+        const cotizacionesDiv = document.createElement('div');
+        cotizacionesDiv.className = 'cotizaciones-actuales';
+        cotizacionesDiv.innerHTML = Object.values(this.cotizaciones)
+            .map(c => `
+                <div class="cotizacion-item">
+                    <h3>${c.nombre}</h3>
+                    <p>Valor: $${c.valor}</p>
+                    <p class="variacion ${c.variacion.startsWith('+') ? 'positiva' : 'negativa'}">
+                        ${c.variacion}
+                    </p>
+                </div>
+            `).join('');
+        
+        const mainSection = document.querySelector('main section');
+        mainSection.insertBefore(cotizacionesDiv, document.getElementById('cotizacionForm'));
+    }
+
+    mostrarHistorial() {
+        const historialDiv = document.getElementById('historial');
+        if (!historialDiv) return;
+
+        historialDiv.innerHTML = `
+            <h3>Últimas Cotizaciones</h3>
+            <ul>
+                ${this.historial.map(h => `
+                    <li>
+                        ${h.moneda}: ${h.cantidad} = $${h.resultado}
+                        <small>(${new Date(h.fecha).toLocaleString()})</small>
+                    </li>
+                `).join('')}
+            </ul>
+        `;
+    }
+}
+
+// Inicialización
+document.addEventListener("DOMContentLoaded", async () => {
+    const cotizador = new CotizadorMonedas();
+    await cotizador.inicializar();
+
     const cotizacionForm = document.getElementById("cotizacionForm");
     const resultadoDiv = document.getElementById("resultado");
 
-    cotizacionForm.addEventListener("submit", (event) => {
+    // Cargar último valor usado
+    const ultimaCotizacion = localStorage.getItem('ultimaCotizacion');
+    if (ultimaCotizacion) {
+        const { moneda, cantidad } = JSON.parse(ultimaCotizacion);
+        document.getElementById('moneda').value = moneda;
+        document.getElementById('cantidad').value = cantidad;
+    }
+
+    cotizacionForm.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         const moneda = document.getElementById("moneda").value;
-        const cantidad = Number(document.getElementById("cantidad").value);
+        const cantidad = Number(document.getElementById("cantidad").value);        if (!cantidad || cantidad <= 0) {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor ingrese una cantidad válida'
+            });
+            return;
+        }
 
-        let cotizacionDolarBNA = 1160;
-        let cotizacionDolarBlue = 1750;
-        let cotizacionDolarTarjeta = 1508;
-        let cotizacionDolarMep = 1151;
-        let cotizacionEuro = 1289;
-        let cotizacionRal = 201;
-        let cotizacionPesoArgentino = 0;
- 
-        //Calculo de la cotizacion de las monedas seleccionadas usando la condicional if para su ejecucion 
-        if (moneda === "dolar") {
-            cotizacionPesoArgentino = cantidad * cotizacionDolarBNA;
-            resultadoDiv.innerHTML = `<p>La cotización del dólar BNA es de ${cotizacionDolarBNA} pesos argentinos. La cotización de ${cantidad} dólares es de ${cotizacionPesoArgentino} pesos argentinos.</p>`;
-        } else if (moneda === "euro") {
-            cotizacionPesoArgentino = cantidad * cotizacionEuro;
-            resultadoDiv.innerHTML = `<p>La cotización del euro es de ${cotizacionEuro} pesos argentinos. La cotización de ${cantidad} euros es de ${cotizacionPesoArgentino} pesos argentinos.</p>`;
-        } else if (moneda === "dolarBlue") {
-            cotizacionPesoArgentino = cantidad * cotizacionDolarBlue;
-            resultadoDiv.innerHTML = `<p>La cotización del dólar blue es de ${cotizacionDolarBlue} pesos argentinos. La cotización de ${cantidad} dólares blue es de ${cotizacionPesoArgentino} pesos argentinos.</p>`;
-        } else {
-            resultadoDiv.innerHTML = `<p>La moneda ingresada no es válida. Por favor, seleccione una moneda válida.</p>`;
+        const resultado = cotizador.calcularCotizacion(moneda, cantidad);
+        
+        if (!resultado) {
+            await Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Moneda no válida'
+            });
+            return;
         }
 
         // Guardar en localStorage
-        const cotizacion = {
+        localStorage.setItem("ultimaCotizacion", JSON.stringify({
             moneda,
-            cantidad,
-            resultado: cotizacionPesoArgentino,
-        };
-        localStorage.setItem("ultimaCotizacion", JSON.stringify(cotizacion));
+            cantidad
+        }));
+
+        // Mostrar resultado con animación
+        resultadoDiv.innerHTML = `
+            <div class="resultado-cotizacion">
+                <h3>Resultado de la Cotización</h3>
+                <p>Moneda: ${resultado.nombre}</p>
+                <p>Cantidad: ${resultado.cantidadOriginal}</p>
+                <p>Cotización actual: $${resultado.valor}</p>
+                <p class="resultado-final">Total: $${resultado.resultado}</p>
+                <p class="variacion ${resultado.variacion.startsWith('+') ? 'positiva' : 'negativa'}">
+                    Variación: ${resultado.variacion}
+                </p>
+                <small>Última actualización: ${new Date(resultado.ultimaActualizacion).toLocaleString()}</small>
+            </div>
+        `;
     });
 });

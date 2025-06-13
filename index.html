@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CotizaYa</title>
+    <title>CotizaYa</title>    <!-- Configuracion de estilos -->
     <link rel="stylesheet" href="./styles/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -15,10 +16,10 @@
         <nav>
             <ul>
                 <li><a href="/index.html">Simulador de Cotización</a></li>
+                <li><a href="./pages/servicios.html">Servicios</a></li> 
+                <li><a href="./pages/productos.html">Productos</a></li>
                 <li><a href="./pages/facturacion.html">Facturación</a></li>
                 <li><a href="./pages/nosotros.html">Sobre nosotros</a></li>
-                <li><a href="./pages/productos.html">Productos</a></li>
-                <li><a href="./pages/servicios.html">Servicios</a></li> 
                 <li><a href="./pages/contacto.html">Contacto</a></li> 
             </ul>
         </nav>
@@ -40,8 +41,8 @@
                 <label for="cantidad">Ingrese la cantidad:</label>
                 <input type="number" id="cantidad" name="cantidad" required>
                 <button type="submit">Cotizar</button>
-            </form>
-            <div id="resultado"></div>
+            </form>            <div id="resultado"></div>
+            <div id="historial"></div>
         </section>
     </main>
 
