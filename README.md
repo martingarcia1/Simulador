@@ -1,6 +1,6 @@
 # CotizaYa - Simulador Interactivo
 
-![Banner del Proyecto](https://via.placeholder.com/800x200?text=CotizaYa+-+Simulador) 
+![Banner del Proyecto](./pages/img/simulador.png) 
 *(Puedes reemplazar esta imagen con una captura de pantalla de tu proyecto)*
 
 ## 📄 Descripción
