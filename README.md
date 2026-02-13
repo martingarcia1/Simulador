@@ -1,95 +1,52 @@
-# Entregable 1 - CotizaYa
+# CotizaYa - Simulador Interactivo
 
-## Estructura del Simulador
+![Banner del Proyecto](https://via.placeholder.com/800x200?text=CotizaYa+-+Simulador) 
+*(Puedes reemplazar esta imagen con una captura de pantalla de tu proyecto)*
 
-Este proyecto es un simulador básico enfocado en la cotización de productos o servicios, facturación y simulación de inversiones. La interacción se realiza íntegramente a través de la consola de JavaScript, utilizando cuadros de diálogo como `Prompt`, `Confirm` y `Alert`.
+## 📄 Descripción
 
---- 
+**CotizaYa** es una aplicación web interactiva desarrollada como parte de la formación académica en la carrera de **Frontend React** de **CoderHouse**. 
 
-## Objetivos Generales
+Este proyecto simula un entorno de cotización de productos y servicios y/o simulación de inversiones, permitiendo al usuario interactuar con una interfaz dinámica para realizar cálculos en tiempo real, gestionar datos y almacenar resultados.
 
-- Armar la estructura base del simulador.
-- Integrar las herramientas de JavaScript aprendidas hasta el momento.
+## 🎯 Objetivo del Proyecto
 
-## Objetivos Específicos
+El objetivo principal es demostrar el dominio de **JavaScript Vanilla** para la creación de aplicaciones web interactivas, manipulando el DOM, gestionando eventos del usuario y persistiendo datos, simulando un flujo de trabajo real de una aplicación frontend.
 
-- Declarar variables, constantes y arrays.
-- Crear funciones que generen interacción con el usuario.
-- Implementar ciclos de iteración y condicionales necesarios para el funcionamiento del simulador.
-- Utilizar la consola de JavaScript y cuadros de diálogo (`Prompt`, `Confirm`, `Alert`).
+## 🚀 Tecnologías Utilizadas
 
----
+*   **HTML5**: Estructura semántica y accesible.
+*   **CSS3**: Diseño visual y estilos personalizados.
+*   **JavaScript (ES6+)**:
+    *   Manipulación del DOM.
+    *   Manejo de Eventos.
+    *   Funciones de Orden Superior.
+    *   Persistencia de datos con `JSON` y `localStorage`.
 
-## Entregable 2 - CotizaYa
+## ✨ Funcionalidades Clave
 
-### Estructura del Simulador
+*   **Interfaz Dinámica**: Eliminación de `prompt` y `alert` en favor de interacciones directas con elementos HTML (inputs, botones).
+*   **Cálculos en Tiempo Real**: Algoritmos de cotización e inversión que procesan datos ingresados por el usuario.
+*   **Persistencia de Datos**: Uso de `localStorage` para recuperar información (como historial de cotizaciones o carritos) incluso después de cerrar el navegador.
+*   **Gestión de Estado**: Uso de Arrays y Objetos para administrar la lógica de negocio y los datos de la aplicación.
 
-En esta segunda etapa, el simulador evoluciona para interactuar directamente con el HTML mediante el uso del DOM y eventos, eliminando la dependencia de la consola de JavaScript.
+## 🎓 Evolución del Aprendizaje
 
----
+Este proyecto refleja el progreso a través de las etapas del curso:
 
-### Objetivos Generales
+1.  **Fundamentos**: Uso de variables, bucles y funciones básicas.
+2.  **Lógica Avanzada**: Implementación de objetos y arrays para estructuras de datos complejas.
+3.  **Interactividad Web**: Integración completa con el navegador mediante el DOM y Eventos, transformando scripts de consola en una aplicación web funcional.
 
-- Mostrar el simulador JS interactuando con HTML.
-- Integrar las herramientas de JavaScript aprendidas hasta el momento.
+## 🛠️ Instrucciones de Ejecución
 
-### Objetivos Específicos
-
-- Modificar la estructura anterior, integrando JavaScript con HTML mediante el uso de DOM y eventos.
-- Programar el circuito de interacción completo de la lógica de la aplicación web, agregando las nuevas herramientas de JavaScript aprendidas.
-- Guardar objetos o arrays de objetos en `localStorage` para dejar disponibles los datos agregados por el usuario (por ejemplo, los productos en un carrito de compras).
-
----
-
-### Se debe entregar
-
-- Documento HTML + CSS (al menos uno).
-- Archivo(s) JS referenciado(s) en el HTML.
-
----
-
-### Formato
-
-- Archivo en formato `.ZIP` con la carpeta y los archivos del proyecto.
-- El nombre del archivo debe ser: `Entregable2+Apellido`.
-- Los archivos JS, CSS y JSON deben estar organizados en subcarpetas.
+1.  **Clonar el repositorio**:
+    ```bash
+    git clone https://github.com/martingarcia1/Simulador.git
+    ```
+2.  **Abrir el proyecto**:
+    Navega a la carpeta del proyecto y abre el archivo `index.html` en tu navegador web de preferencia (Chrome, Firefox, Edge).
 
 ---
 
-### Sugerencias
-
-- En esta etapa, debes integrar JavaScript con HTML y/o CSS.
-- Diseña la estética visual necesaria en tu webapp con CSS y/o un framework CSS.
-- Los algoritmos de JavaScript deben ser invocados desde HTML e interactuar con el contenido web, creando HTML dinámico, leyendo y procesando datos ingresados desde formularios, inputs, etc.
-- Elimina toda interacción con la consola de JavaScript, convirtiendo esta interacción en el DOM del HTML.
-
----
-
-### Criterios de Evaluación
-
-#### Funcionalidad
-- Se simula uno o más flujos de trabajo en términos de entrada, proceso y salida.
-- La funcionalidad es apropiada al contexto del simulador.
-- Carece de errores de cómputo durante el procesamiento.
-
-#### Interactividad
-- Se capturan entradas ingresadas por el usuario mediante eventos.
-- Se efectúan una o más salidas por HTML modificando el DOM.
-- Existe un control de ingreso de entradas y las salidas son coherentes en relación a los datos ingresados.
-
-#### Escalabilidad
-- Se declaran funciones con parámetros para definir instrucciones con una tarea específica.
-- Se emplean arrays para agrupar valores relacionados.
-- Se definen objetos con propiedades y métodos relevantes al contexto.
-- Se establece un criterio homogéneo para la detección de eventos.
-- Se almacena en `localStorage` datos relevantes generados durante la simulación.
-
-#### Integridad
-- Se define el código JavaScript en un archivo `.js`, referenciándolo correctamente desde el HTML.
-- Se evitan métodos `prompt()` y `alert()` para evitar interrupciones durante el procesamiento y actualización del DOM.
-- La información estática del proyecto se emplea adecuadamente.
-
-#### Legibilidad
-- Los nombres de variables, funciones y objetos son significativos para el contexto.
-- Las instrucciones se escriben de forma legible y se emplean comentarios oportunos.
-- El código fuente es ordenado en términos de declaración y secuencia.
+Desarrollado por **Martín García** para **CoderHouse**.
